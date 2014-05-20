@@ -1,6 +1,6 @@
 // Split text lines to layers
 
-for (var i=0; i<selection.length(); i++) {
+for (var i=0; i<selection.count(); i++) {
   var layer = selection[i],
       frame = [layer frame],
       layerString = [layer stringValue],
@@ -18,7 +18,7 @@ for (var i=0; i<selection.length(); i++) {
     [newLayer setStringValue: line];
     [newLayer setName: line];
     [newFrame addY: (lineHeight * j)];
-    [newLayer setIsSelected: YES];
+    [newLayer select:true byExpandingSelection:true];
 
     // Duplicated layers still retain old height info; bug?
     [newFrame setHeight: [newLayer lineSpacing]];

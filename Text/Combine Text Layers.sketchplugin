@@ -5,7 +5,7 @@ var textArray = [],
     parent = [firstObject parentGroup], // layer parent for removing original layer
     newLayer = [firstObject duplicate];
 
-for (var i=0; i<selection.length(); i++) {
+for (var i=0; i<selection.count(); i++) {
   var layer = selection[i],
       frame = [layer frame];
 
@@ -38,7 +38,7 @@ var lineHeight = [newLayer lineSpacing],
 
 [newLayer setStringValue: combinedText];
 [newFrame setY: textArray[0].y];
-[newLayer setIsSelected: YES];
+[newLayer select:true byExpandingSelection:true]
 
 // New layer still retains old height info; bug?
 [newFrame setHeight: (lineHeight * textArray.length)];
