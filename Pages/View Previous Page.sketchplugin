@@ -1,0 +1,19 @@
+// View Previous Page (ctrl alt command ←)
+
+var pages = [doc pages],
+    current = [doc currentPage],
+    pageCount = pages.count() - 1;
+
+for (var i = 0; i < pages.count(); i++) {
+
+  if (pages[i] == current) {
+    if (i == 0) {
+      var last = pages[pageCount];
+      [doc setCurrentPage:last];
+    } else {
+      var prev = pages[i-1];
+      [doc setCurrentPage:prev];
+    };
+  };
+
+};
