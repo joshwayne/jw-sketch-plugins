@@ -22,7 +22,7 @@ Previous page: `⌥⌘←`
 ## 3. Layer Plugins
 
 ### Toggle Layers
-Toggles the visibility of all layers and groups containing "👀" (eyes emoji) with the command `⌃⌥⌘H`
+Toggles the visibility of all layers and groups containing ":eyes:" (eyes emoji) with the command `⌃⌥⌘H`
 
 
 
