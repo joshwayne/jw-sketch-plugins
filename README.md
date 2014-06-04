@@ -15,6 +15,14 @@ Takes a group of selected text layers and combines the text to a single layer.
 ### View Previous/Next Page
 Simple plugin to add keyboard shortcuts to view the previous/next page 
 
+Next page: `⌥⌘→`
+
+Previous page: `⌥⌘←`
+
+## 3. Layer Plugins
+
+### Toggle Layers
+Toggles the visibility of all layers and groups containing "👀" (eyes emoji) with the command `⌃⌥⌘H`
 
 
-More coming soon...
+
