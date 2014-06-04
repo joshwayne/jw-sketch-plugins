@@ -8,7 +8,7 @@ This is a collection of plugins I've created for Bohemian Coding's sweet design 
 Takes the currently selected text layer and splits each text line to its own separate layer. 
 
 ### Combine Text Layers
-Takes a group of selected text layers and combines the text to a single layer.
+Takes the current selection of separate text layers and combines the text to a single layer.
 
 ## 2. Page Plugins
 
