@@ -1,0 +1,5 @@
+{
+    "name": "JW Plugins",
+    "description": "A small collection of plugins for manipulating text, switching pages, and toggling layers",
+    "tags": ["text", "pages", "commands"]
+}
