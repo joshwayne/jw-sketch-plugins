@@ -1,0 +1,31 @@
+{
+  "author" : "Josh Wayne",
+  "commands" : [
+    {
+      "script" : "split.cocoascript",
+      "handler" : "onRun",
+      "shortcut" : "",
+      "name" : "Split Text Lines to Layers",
+      "identifier" : "split text lines to layers"
+    },
+    {
+      "script" : "combine.cocoascript",
+      "handler" : "onRun",
+      "shortcut" : "",
+      "name" : "Combine Text Layers",
+      "identifier" : "combine text layers"
+    }
+  ],
+  "menu" : {
+    "items" : [
+      "split text lines to layers",
+      "combine text layers"
+    ],
+    "title" : "Text"
+  },
+  "identifier" : "com.example.sketch.653c8e62-faf5-4e5d-a77b-2f0e50094e5f",
+  "version" : "1.0",
+  "description" : "",
+  "authorEmail" : "",
+  "name" : "Split/Combine Text"
+}

@@ -1,0 +1,49 @@
+var onRun = function(context) {
+  // Combine text layers
+
+  var textArray = [],
+      firstObject = context.selection[0],
+      parent = [firstObject parentGroup], // layer parent for removing original layer
+      newLayer = [firstObject duplicate],
+      selectedLayers = context.selection,
+      selectedCount = selectedLayers.count();
+
+  for (var i=0; i<selectedCount; i++) {
+    var layer = selectedLayers[i],
+        frame = [layer frame],
+        layerVals = {
+          text: [layer stringValue],
+          y: [frame y]
+        };
+
+    textArray.push(layerVals);
+
+    // Remove layer
+    [parent removeLayer: layer];
+  };
+
+  textArray.sort(function (a, b) {
+      if (a.y > b.y)
+        return 1;
+      if (a.y < b.y)
+        return -1;
+      // a must be equal to b
+      return 0;
+  });
+
+
+  var lineHeight = [newLayer lineSpacing],
+      newFrame = [newLayer frame],
+      combinedText = textArray.map(function(elem){
+      return elem.text;
+  }).join("\n");
+
+  [newLayer setStringValue: combinedText];
+  [newFrame setY: textArray[0].y];
+  [newLayer select:true byExpandingSelection:true]
+
+  // New layer still retains old height info; bug?
+  [newFrame setHeight: (lineHeight * textArray.length)];
+
+
+};
