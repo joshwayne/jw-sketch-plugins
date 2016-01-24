@@ -1,0 +1,25 @@
+// Toggle Layers (ctrl alt cmd h)
+
+var doc = context.document;
+var layerCompare = "👀"; // change this to whatever you'd like to match
+var layerGroups = doc.currentPage().children();
+
+for (var i=0; i<layerGroups.count(); i++) {
+	var layerGroup = [layerGroups objectAtIndex: i];
+
+	if ([layerGroup class] != (MSArtboardGroup || MSPage)) {
+		nameMatcher(layerGroup);
+	};
+}
+
+function nameMatcher (layer) {
+	var layerName = [layer name];
+
+	if (layerName.match(layerCompare)) {
+		if ([layer isVisible]) {
+			[layer setIsVisible:false];
+		} else {
+			[layer setIsVisible:true];
+		}
+	}
+}
