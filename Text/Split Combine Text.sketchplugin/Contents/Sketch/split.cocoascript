@@ -4,6 +4,8 @@ var onRun = function(context) {
 var selectedLayers = context.selection,
     selectedCount = selectedLayers.count();
 
+var paragraphSpacing = Number(context.document.askForUserInput_initialValue('What is paragraph spacing?', '10'))
+
 if (selectedCount == 0) {
   log('No layers are selected.');
 } else {
@@ -24,12 +26,13 @@ if (selectedCount == 0) {
       } else {
         var newLayer = [layer duplicate],
             newFrame = [newLayer frame],
-            lineHeight = [newLayer lineSpacing];
+            lineHeight = [newLayer lineSpacing],
+            shift = paragraphSpacing + lineHeight;
 
         // Set text, layer name, and offset y for new layer and select it
         [newLayer setStringValue: line];
         [newLayer setName: line];
-        [newFrame addY: (lineHeight * j)];
+        [newFrame addY: (shift * j)];
         [newLayer select:true byExpandingSelection:true];
 
         // Duplicated layers still retain old height info; bug?
