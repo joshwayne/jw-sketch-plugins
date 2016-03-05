@@ -1,43 +1,37 @@
 var onRun = function(context) {
   // Split text lines to layers
 
-var selectedLayers = context.selection,
-    selectedCount = selectedLayers.count();
+  var selectedLayers = context.selection
+  var selectedCount = selectedLayers.count()
+  var prompt = context.document.askForUserInput_initialValue
+  var paragraphSpacing = Number(prompt('What is paragraph spacing?', '10'))
 
-var paragraphSpacing = Number(context.document.askForUserInput_initialValue('What is paragraph spacing?', '10'))
-
-if (selectedCount == 0) {
-  log('No layers are selected.');
-} else {
-  // Loop through selected layers
-  for (var i=0; i<selectedCount; i++) {
-    var layer = selectedLayers[i],
-        frame = [layer frame],
-        layerString = [layer stringValue],
-        lines = layerString.split("\n"), // split text at new line character
-        parent = [layer parentGroup]; // layer parent for removing original layer
+  for (var i = 0; i < selectedCount; i++) {
+    var layer = selectedLayers[i]
+    var frame = [layer frame]
+    var layerString = [layer stringValue]
+    var lines = layerString.split('\n')
+    var parent = [layer parentGroup]
 
     // Create new layer for each line
-    for (j=0; j<lines.length; j++) {
-      var line = lines[j];
+    for (j = 0; j < lines.length; j++) {
+      var line = lines[j]
 
-      var newLayer = [layer duplicate],
-          newFrame = [newLayer frame],
-          lineHeight = [newLayer lineSpacing],
-          shift = paragraphSpacing + lineHeight;
+      var newLayer = [layer duplicate]
+      var newFrame = [newLayer frame]
+      var lineHeight = [newLayer lineSpacing]
+      var shift = paragraphSpacing + lineHeight
 
-      // Set text, layer name, and offset y for new layer and select it
-      [newLayer setStringValue: line];
-      [newLayer setName: line];
-      [newFrame addY: (shift * j)];
-      [newLayer select:true byExpandingSelection:true];
+      [newLayer setStringValue: line]
+      [newLayer setName: line]
+      [newFrame addY: (shift * j)]
+      [newLayer select: true byExpandingSelection: true]
 
       // Duplicated layers still retain old height info; bug?
-      [newFrame setHeight: [newLayer lineSpacing]];
-    };
+      [newFrame setHeight: [newLayer lineSpacing]]
+    }
 
     // Remove original layer
-    [parent removeLayer: layer];
-  };
-};
-};
+    [parent removeLayer: layer]
+  }
+}
