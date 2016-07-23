@@ -1,44 +1,44 @@
 var onRun = function(context) {
   // Split text lines to layers
 
-var selectedLayers = context.selection,
-    selectedCount = selectedLayers.count();
+  var selectedLayers = context.selection,
+      selectedCount = selectedLayers.count();
 
-if (selectedCount == 0) {
-  log('No layers are selected.');
-} else {
-  // Loop through selected layers
-  for (var i=0; i<selectedCount; i++) {
-    var layer = selectedLayers[i],
-        frame = [layer frame],
-        layerString = [layer stringValue],
-        lines = layerString.split("\n"), // split text at new line character
-        parent = [layer parentGroup]; // layer parent for removing original layer
+  if (selectedCount == 0) {
+    log('No layers are selected.');
+  } else {
+    // Loop through selected layers
+    for (var i=0; i<selectedCount; i++) {
+      var layer = selectedLayers[i],
+          frame = [layer frame],
+          layerString = [layer stringValue],
+          lines = layerString.split("\n"), // split text at new line character
+          parent = [layer parentGroup]; // layer parent for removing original layer
 
-    // Create new layer for each line
-    for (j=0; j<lines.length; j++) {
-      var line = lines[j];
+      // Create new layer for each line
+      for (j=0; j<lines.length; j++) {
+        var line = lines[j];
 
-      if (line.length == 0) {
-        continue; // skip if it's a blank line
-      } else {
-        var newLayer = [layer duplicate],
-            newFrame = [newLayer frame],
-            lineHeight = [newLayer lineSpacing];
+        if (line.length == 0) {
+          continue; // skip if it's a blank line
+        } else {
+          var newLayer = [layer duplicate],
+              newFrame = [newLayer frame],
+              lineHeight = [newLayer lineSpacing];
 
-        // Set text, layer name, and offset y for new layer and select it
-        [newLayer setStringValue: line];
-        [newLayer setName: line];
-        [newFrame addY: (lineHeight * j)];
-        [newLayer select:true byExpandingSelection:true];
+          // Set text, layer name, and offset y for new layer and select it
+          [newLayer setStringValue: line];
+          [newLayer setName: line];
+          [newFrame setY: (lineHeight * j + frame.y())];
+          [newLayer select:true byExpandingSelection:true];
 
-        // Duplicated layers still retain old height info; bug?
-        [newFrame setHeight: [newLayer lineSpacing]];
+          // Duplicated layers still retain old height info; bug?
+          [newFrame setHeight: [newLayer lineSpacing]];
+        };
       };
-    };
 
-    // Remove original layer
-    [parent removeLayer: layer];
+      // Remove original layer
+      [parent removeLayer: layer];
+    };
   };
-};
 };
