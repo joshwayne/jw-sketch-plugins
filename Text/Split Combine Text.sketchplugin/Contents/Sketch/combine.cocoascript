@@ -23,10 +23,12 @@ var onRun = function(context) {
   };
 
   textArray.sort(function (a, b) {
-      if (a.y > b.y)
+      if (a.y > b.y) {
         return 1;
-      if (a.y < b.y)
+      }
+      if (a.y < b.y) {
         return -1;
+      }
       // a must be equal to b
       return 0;
   });
@@ -46,4 +48,4 @@ var onRun = function(context) {
   [newFrame setHeight: (lineHeight * textArray.length)];
 
 
-};
+}
