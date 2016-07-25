@@ -23,9 +23,9 @@
     ],
     "title" : "Text"
   },
-  "identifier" : "com.example.sketch.653c8e62-faf5-4e5d-a77b-2f0e50094e5f",
-  "version" : "2.0",
-  "description" : "",
+  "identifier" : "com.joshwayne.sketch.split-combine-text",
+  "version" : "2.1",
+  "description" : "Simple plugin to split and combine multiple text lines.",
   "authorEmail" : "",
   "name" : "Split/Combine Text"
 }
