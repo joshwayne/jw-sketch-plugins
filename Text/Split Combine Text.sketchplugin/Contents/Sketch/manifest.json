@@ -24,7 +24,7 @@
     "title" : "Text"
   },
   "identifier" : "com.joshwayne.sketch.split-combine-text",
-  "version" : "2.1",
+  "version" : "3.0",
   "description" : "Simple plugin to split and combine multiple text lines.",
   "authorEmail" : "",
   "name" : "Split/Combine Text"

@@ -33,17 +33,23 @@ var onRun = function(context) {
       return 0;
   });
 
-  var lineHeight = [newLayer lineSpacing],
+  var lineHeight = [newLayer lineHeight],
       newFrame = [newLayer frame],
       combinedText = textArray.map(function(elem){
       return elem.text;
   }).join("\n");
+
+  // Bug in Sketch causes lineHeight to return 0 if set to auto. Faking it with magic number.
+  if (lineHeight == 0) {
+    lineHeight = [newLayer fontSize] * 1.2;
+  };
 
   [newLayer setStringValue: combinedText];
   [newFrame setY: textArray[0].y];
   [newLayer select:true byExpandingSelection:true]
 
   // New layer still retains old height info; bug?
-  [newFrame setHeight: (lineHeight * textArray.length)];
+  log(lineHeight * textArray.length);
+  newFrame.setHeight(Math.round(lineHeight * textArray.length));
 
 };
