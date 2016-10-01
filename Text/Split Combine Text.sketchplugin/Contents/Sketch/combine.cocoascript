@@ -49,7 +49,6 @@ var onRun = function(context) {
   [newLayer select:true byExpandingSelection:true]
 
   // New layer still retains old height info; bug?
-  log(lineHeight * textArray.length);
   newFrame.setHeight(Math.round(lineHeight * textArray.length));
 
 };
